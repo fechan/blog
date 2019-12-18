@@ -104,7 +104,6 @@ for _, direction in ipairs({'up', 'down', 'other'}) do
                 turtle.back()
             end
         end
-        turtle.turnLeft()
     end
 end
 {% endhighlight %}
@@ -150,7 +149,6 @@ function mineVein ()
                     turtle.back()
                 end
             end
-            turtle.turnLeft()
         end
     end
 end
