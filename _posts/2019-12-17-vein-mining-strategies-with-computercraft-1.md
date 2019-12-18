@@ -23,7 +23,7 @@ What's cool about this is that you can actually see the turtle move and traverse
 ## Modeling the problem
 Veins of ores are clusters of adjacent ore blocks, and you want to mine all of them to get the most out of the vein. You don't know where all the blocks of the vein are to begin with, so you only know where one of the blocks are. Around the ore blocks might be all kinds of other blocks you don't care about, like stone or dirt. If you think about it, the blocks are like nodes of a tree or a graph data structure. A node stores data and has connections to other nodes (or sometimes null). Ore blocks store their block ID (like `minecraft:iron_ore`) and has connections to either other ore blocks or non-ore blocks on each of its sides.
 
-![Diagram of a tree and a vein of ores](/assets/images/veinmining-tree-diagram.png)
+![Diagram of a tree and a vein of ores](/blog/assets/images/veinmining-tree-diagram.png)
 
 For a turtle to distinguish between an ore block and a non-ore block, we can define a simple function that takes the block data from `turtle.inspect()` and returns if it's ore or not. If your distinguishing logic is very simple and fits on one line, you *could* forego this, but it gets harder to change later.
 
