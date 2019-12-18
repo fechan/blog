@@ -50,7 +50,7 @@ function traverse(node):
 
 This is analogous to our turtle mining a block, going to the block's position, then if it was ore, doing something with it, looking around to see if there are blocks around it, and doing it all over again for every new block it finds. If it wasn't an ore block, it will go back up the call stack by [returning to where it was before](https://www.cs.utexas.edu/~scottm/cs307/handouts/recursiveBacktrackingExplanation.htm) until it has looked at all the blocks in and around the vein. This is a little wasteful, since moving takes time, so we just have it *not* traverse connections with non-ore at the end. Then you don't have to pass any parameters and you end up with something like this:
 
-{% highlight lua}
+{% highlight lua %}
 function mineVein ()
     for _, direction in ipairs({'up', 'down', 'front', 'left', 'back', 'right'}) do
         if direction == 'up' then
@@ -67,7 +67,7 @@ function mineVein ()
 
 Notice that the turtle has to move in a direction, recurse, and move in the opposite direction so that it's in the position it was before recursing. This is really simple to do in the up, down, and forward case since it's not turning; it can just inspect in that direction, go in that direction, and then go in the opposite direction. For the left, back, and right cases, however, you have to turn...
 
-{% highlight lua}
+{% highlight lua %}
 ...
     if direction == 'left' then
         turtle.turnLeft()
@@ -88,7 +88,7 @@ If you do this for left, right, and back, you'll notice it's doing a silly dance
 ## The trick
 For a turtle to face backwards, it has to turn left or right twice. To face forwards again, it has to turn left or right twice again. Since it has to turn a full circle anyway in order to inspect all four directions— front, left, back, and right— you might as well collapse them into one case and have the turtle do a single circle by turning it four times in one direction. Every time you turn, inspect. If it's ore, recurse.
 
-{% highlight lua}
+{% highlight lua %}
 for _, direction in ipairs({'up', 'down', 'other'}) do
     if direction == 'up' then
         ...
@@ -112,7 +112,7 @@ end
 ## The code
 Now for the part you actually care about:
 
-{% highlight lua}
+{% highlight lua %}
 --Tested with ComputerCraft 1.80
 
 --- Given a block's data, returns true if it's a treasure
