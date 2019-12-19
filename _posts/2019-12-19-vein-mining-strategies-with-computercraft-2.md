@@ -219,7 +219,7 @@ end
 -- @param Table xyz             Table of coordinates {x,y,z} of the starting point
 -- @param String orientation    The cardinal direction you face at the starting point
 -- @param String direction      The direction (e.g. left, right, up) you would turn and proceed into
--- @return {{x, y, z}, orientation} of destination
+-- @return { {x, y, z}, orientation } of destination
 function calcDest (xyz, orientation, direction)
     local dest = {x=xyz['x'], y=xyz['y'], z=xyz['z']}
     if direction == 'up' then
