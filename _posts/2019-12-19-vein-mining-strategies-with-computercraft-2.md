@@ -17,7 +17,7 @@ end
 
 ## Modeling the problem
 ![Example diagram of a graph](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/320px-6n-graf.svg.png)
-Graphs are a lot like trees, except multiple nodes can connect to the same node. This represents Minecraft blocks better since up to six blocks can connect to the same block via its edges. You can also traverse graphs in a similar way to trees. The only problem is that in a graph, nodes can form cyclic connections (like nodes 2-5 in the graph diagram above). This means if you don't keep track of which nodes you've already visited and avoid them, your traversal will get stuck in a loop.
+Graphs are a lot like trees, except multiple nodes can connect to the same node. This represents Minecraft blocks better since up to six blocks can connect to the same block via its edges. You can also traverse graphs in a similar way to trees. The only problem is that in a graph, nodes can form cyclic connections (like nodes 2-3-4-5 in the graph diagram above). This means if you don't keep track of which nodes you've already visited and avoid them, your traversal will get stuck in a loop.
 
 Your first thought for keeping track of blocks you've already visited might be to keep a list of coordinates accessible via the game's debug (F3) menu. It's a step in the right direction, but since they're global coordinates, you also have to keep track of where the turtle is at all times. Instead, you can keep track of blocks in terms of their location relative to where the turtle started, and say the starting position is {x=0, y=0, z=0} for simplicity.
 
@@ -44,7 +44,7 @@ function calcDest (xyz, orientation, direction)
 end
 {% endhighlight %}
 
-Notice that we had to construct a new destination xyz out of the xyz of our starting location. That's because if we just did `local dest = xyz`, changing dest would change xyz *even outside of our function*, since Lua [tables are pass by reference](https://stackoverflow.com/questions/6128152/function-variable-scope-pass-by-value-or-reference). The orientation, a string, is passed by value and we don't have to worry about that.
+Notice that we had to construct a new destination xyz out of the xyz of our starting location. That's because if we just did `local dest = xyz`, changing dest would change xyz *even outside of our function*, since Lua [tables are pass by reference](https://stackoverflow.com/questions/6128152/function-variable-scope-pass-by-value-or-reference). On the other hand, the orientation, a string, is passed by value so we don't have to worry about that.
 
 Now for the sideways cases, where you have to determine the final orientation with a calculation. If we quantify the direction we want to turn in (like backwards) as the number of left turns we want to make (2 for back), and then we quantify our orientation (like east) as the number of left turns you have to make from north (3 for east), then you can take the two left turn counts and add them together (2+3=5). Divide it by the number of orientations (4) and take the remainder (5%4=1). The result is the amount of left turns from north it would take to get you in the orientation you'd face (1=west, the orientation you'd face if you looked backwards facing east). In Lua, it looks like this:
 
@@ -112,7 +112,7 @@ function mineVeinHelper (xyz, orientation, traversed)
     ...
 {% endhighlight %}
 
-Then we traverse each edge of the block we're in much like we did with the tree, except we check if turning in that direction will result in inspecting a block already inspected. If not, we add its coordinate to the list of blocks inspected and then we inspect it. The process of actually traversing to that block is exactly the same as when we traversed the vein like a tree.
+Then we traverse each edge of the block we're in much like we did with the tree, except we check if turning in that direction will result in inspecting a block already inspected. If not, we add its coordinate to the list of blocks inspected and then we inspect it. The process of actually traversing to that block is the same as when we traversed the vein like a tree, but we pass in our current location and orientation to the next step of traversal.
 
 {% highlight lua %}
 function mineVeinHelper (xyz, orientation, traversed)
@@ -134,10 +134,10 @@ function mineVeinHelper (xyz, orientation, traversed)
 
 Once again, you *could* define every case like the up case and it would work. But just like in the tree traversal, when you do the back case, you might as well do the left and right cases while you're doing the full circle to look backwards and forwards again. Unlike the tree traversal however, *you still have to define those cases separately,* because sometimes you'll end up in a situation where you've already inspected the back block but not the right or left block. If you don't define the left and right cases, the back case won't run and the left and right blocks don't get inspected.
 
-There is a separate optimization to make the front/left/right case into one big case to make the code smaller because they only differ by the amount and direction you turn before and after inspection, but I'll cover that later.
+There is a separate optimization to make the front/left/right case into one big case to make the code smaller because they only differ by the amount and direction you turn before and after inspection. I'll cover that later.
 
 ## Back case optimization
-Like the back case of the tree traversal method, we can do the left and right cases while we're in the process of turning backwards and unturning. The added complexity here is that we have to recalculate the block we're looking at each time we turn. We want to store the resulting orientation of turning left once into `leftOrient`, the resulting destination block into `leftDest`, and traverse into that block if it's ore. If we do this three times, we get to inspect the left, back, *and* right block whenever we want to inspect backwards. Sweet! Then we just turn left again to return to facing forwards.
+Like the back case of the tree traversal method, we can do the left and right cases while we're in the process of turning backwards and unturning. The added complexity here is that we have to recalculate the block we're looking at each time we turn. We want to store the resulting orientation of turning left once into `leftOrient`, the resulting destination block into `leftDest`, and traverse into that block if it's ore. If we do this three times, we get to inspect the left, back, *and* right block whenever we want to inspect backwards. Sweet! Then we just turn left to face forwards again.
 
 {% highlight lua %}
 ...
