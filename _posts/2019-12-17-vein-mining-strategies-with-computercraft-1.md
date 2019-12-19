@@ -6,7 +6,7 @@ title: "Vein Mining with ComputerCraft Part 1 (Veins as Trees)"
 ## tl;dr
 ComputerCraft is a Minecraft mod that adds Lua-programmable turtles (robots) that can inspect and mine blocks. You can represent contiguous veins of ores as tree or graph structures and mine all the blocks with a tree/graph traversal. Trees are slow but less complex, and graphs are fast but more complex. You can minimize the time to analyze blocks on the same elevation as the turtle with a neat trick. This post talks about the tree method, and the full code is at the bottom.
 
-![ComputerCraft turtles](http://www.computercraft.info/wiki/images/b/bf/Turtles.png) *ComputerCraft turtles of different varieties*
+![ComputerCraft turtles](http://www.computercraft.info/wiki/images/b/bf/Turtles.png)
 
 ## Motivation
 My friends and I started a modded Minecraft run where we split into two teams and competed to go to space with Galacticraft. We included one of my all time favorite mods, [ComputerCraft](https://www.computercraft.info/wiki/Main_Page), which adds robots (called [turtles](http://www.computercraft.info/wiki/Turtle)) that can interact with the world by moving around, analyzing blocks, and mining up blocks. The robots are programmable with Lua, which is a heretical language where lists start at 1. Since mining is easily the most boring part of Minecraft (I prefer the crafting), knowing I can make a mining turtle do that for me is a blessing.
