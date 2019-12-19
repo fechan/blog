@@ -1,6 +1,7 @@
 title: "Frederick's Cacophony"
 author: "Frederick Chan"
-description: "Frederick's blog"
+tagline: "Thoughts on technology, language, gaming, et cetera."
+description: "Frederick's thoughts on technology, language, gaming, et cetera."
 permalink: /:title/
 lang: "en"
 
@@ -26,3 +27,4 @@ comments:                    # embed disqus or isso comments
 plugins:
  - jekyll-feed
  - jekyll-default-layout
+ - jekyll-seo-tag
