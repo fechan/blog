@@ -207,7 +207,7 @@ Since we have to make these cases anyway, we can collapse them all into one and 
 ## The code
 Now for the part you actually care about! Call mineVein() when the turtle is next to some ore and it will mine the vein. If you use it as part of a strip-mining program, you can call it when it digs an ore along its path (faster, misses more ore) or whenever it moves (slower, more thorough).
 
-{% highlight lua %}
+{% raw %}
 --- Given a block's data, returns true if it's a treasure
 -- @return Boolean of whether it's a treasure
 function isTreasure (block)
@@ -332,4 +332,4 @@ function mineVeinHelper (xyz, orientation, traversed)
         end
     end
 end
-{% endhighlight %}
+{% endraw %}
