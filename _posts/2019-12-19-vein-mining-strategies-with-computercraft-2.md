@@ -7,7 +7,7 @@ title: "Vein Mining with ComputerCraft Part 2 (Veins as Graphs)"
 [Last time]({% post_url 2019-12-17-vein-mining-strategies-with-computercraft-1 %}), we talked about representing ore veins as trees. This time, we talk about representing them as graphs, which is faster but complex. This is because you have to calculate locations of blocks already inspected, as well as avoiding re-inspecting those blocks. The full code is at the bottom.
 
 ## Takeaways from last time
-If you read [last post]({% post_url 2019-12-17-vein-mining-strategies-with-computercraft-1.md %}) about the trees, you'll remember that the tree traversal is slow because it keeps inspecting blocks it has already inspected. You'll also remember that we employed a trick where whenever we want the turtle to inspect backwards, we have it inspect the front and sides while it was at it. We'll employ something similar again for the graph traversal, and we'll need the `isTreasure()` function again.
+If you read [last post]({% post_url 2019-12-17-vein-mining-strategies-with-computercraft-1 %}) about the trees, you'll remember that the tree traversal is slow because it keeps inspecting blocks it has already inspected. You'll also remember that we employed a trick where whenever we want the turtle to inspect backwards, we have it inspect the front and sides while it was at it. We'll employ something similar again for the graph traversal, and we'll need the `isTreasure()` function again.
 
 {% highlight lua %}
 function isTreasure (block)
