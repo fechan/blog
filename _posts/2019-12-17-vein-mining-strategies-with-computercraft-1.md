@@ -111,7 +111,7 @@ end
 ## The code
 Now for the part you actually care about! Call mineVein() when the turtle is next to some ore and it will mine the vein. If you use it as part of a strip-mining program, you can call it when it digs an ore along its path (faster, misses more ore) or whenever it moves (slower, more thorough).
 
-[Next post, I talk about the graph method and its code.]({% post_url 2019-12-19-vein-mining-strategies-with-computercraft-2 %})
+[Next post, I talk about the graph method and its code.]({% post_url 2019-12-17-vein-mining-strategies-with-computercraft-2 %})
 
 {% highlight lua %}
 --Tested with ComputerCraft 1.80
