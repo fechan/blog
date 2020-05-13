@@ -51,7 +51,7 @@ Expr expr = new Expr(
         new Expr(Expr.STRING, query), new Expr("Image")
     }
 );
-// Mathematica is the Wolfram Kernel link that you have to initiate earlier
+// "mathematica" is the Wolfram Kernel link that you have to initiate earlier
 mathematica.evaluateToImage(expr, 0);
 ```
 
