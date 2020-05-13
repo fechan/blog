@@ -6,15 +6,16 @@ title: "Mathematikka: WolframAlpha in Minecraft"
 ## tl;dr
 I put WolframAlpha in Minecraft by writing [Mathematikka](https://github.com/fechan/Mathematikka), a Bukkit plugin that queries Mathematica via J/Link to get WolframAlpha results.
 
-<video controls width="500">
-    <source src="/blog/assets/images/wolframinecraft.mp4"
-            type="video/mp4">
+<div style="display: flex; justify-content: center">
+    <video controls width="500">
+        <source src="/blog/assets/images/wolframinecraft.mp4"
+                type="video/mp4">
 
-    Sorry, your browser doesn't support embedded videos.
-</video>
+        Sorry, your browser doesn't support embedded videos.
+    </video>
 
 ## Motivation
-As a kid, I was always told to stop playing video games. "Video games will rot your brains," they said. "Video games are why your generation is dumb," they said. On the other hand, they never said the same of homework. As a kid, it always felt like adults worshipped school and homework, and begrudgingly I'd slave away at rows and rows of arithmetic problems. "What if my homework *was* video games?" I thought, "Wouldn't that be great?"
+As a kid, I was always told to stop playing video games. "Video games will rot your brains," they said. "Video games are why your generation is dumb," they said. On the other hand, they never said the same of homework. As a kid, it always felt like adults worshiped school and homework, and begrudgingly I'd slave away at rows and rows of arithmetic problems. "What if my homework *was* video games?" I thought, "Wouldn't that be great?"
 
 Now, with the power of the [Mathematikka Bukkit plugin](https://github.com/fechan/Mathematikka), you too can claim to do your homework while building dirt houses! Simply get a book and quill, write something you want to give WolframAlpha, sign the book with the title "WolframAlpha," and throw it on the ground. Within seconds*, WolframAlpha output will appear before your very eyes!
 
