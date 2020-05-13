@@ -27,7 +27,7 @@ When the signed book and quill hits the ground, it asks a [Mathematica](https://
 
 For some reason all the downloads of J/Link by itself have disappeared off the face of the earth, but if you have Mathematica installed, it will be in `MATHEMATICA_INSTALL_DIRECTORY/SystemFiles/Links/JLink/`. All you really need is `JLink.jar` and the `SystemFiles` directory, which contains some kind of native library that JLink can't function without. When you try starting a kernel link, `JLink.jar` will expect `SystemFiles` to be in the same directory as itself and search for the native library in there. Now, if you're going to develop your own plugin that uses J/Link, read carefully: I put these files in `BUKKIT_SERVER_DIRECTORY/Plugins/lib/`, where external libraries for Bukkit plugins are typically added. In order to specify JLink as part of the plugin's classpath, you have to specify the path and name of the jar in the POM, otherwise the manifest it generates will append a version number to the classpath. This is a problem because when looking for `SystemFiles`, JLink finds itself by searching for a `JLink.jar` with that name specifically. *If it's named anything else, it will fail to find the library and stop working!* This gave me about an hour's worth of hair-tearing before I figured it out.
 
-```XML
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-jar-plugin</artifactId>
@@ -43,7 +43,7 @@ For some reason all the downloads of J/Link by itself have disappeared off the f
 ```
 The rest is smooth sailing. Mathematica has a function called `WolframAlpha[]`, which conveniently lets you give it a text query and gets the results from WolframAlpha (and what's even better is it's WolframAlpha Pro, so if you get Mathematica for free from your institution, you have WA Pro for free as well). If you set the format to `"Image"`, it returns a nicely formatted image that we can cut up and turn into map items in Minecraft. To use J/Link to call this function in the Wolfram Kernel and get the image back, you use this:
 
-```Java
+```java
 String query = "Whatever you want to evaluate in WolframAlpha";
 Expr expr = new Expr(
     new Expr(Expr.SYMBOL, "WolframAlpha"),
@@ -57,7 +57,7 @@ mathematica.evaluateToImage(expr, 0);
 
 This builds the function expression piece by piece, starting with the function reference then all of its parameters. The alternative is to build a string that contains Wolfram Language and pass that into `evaluateToImage();` in place of `expr`, but if you're accepting user input, this is really dangerous. If the user somehow escapes the string (e.g. by adding a `"` in their WolframAlpha query), they can perform a Mathematica injection, which is like a [SQL injection](https://owasp.org/www-community/attacks/SQL_Injection) but for Mathematica. I'll show you how:
 
-```Mathematica
+```mathematica
 (* What gets evaluated if the input is nice *)
 In[*]:= WolframAlpha["what is the meaning of life?", "Image"]
 (* What gets evaluated if the input is evil *)
