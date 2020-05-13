@@ -13,6 +13,7 @@ I put WolframAlpha in Minecraft by writing [Mathematikka](https://github.com/fec
 
         Sorry, your browser doesn't support embedded videos.
     </video>
+</div>
 
 ## Motivation
 As a kid, I was always told to stop playing video games. "Video games will rot your brains," they said. "Video games are why your generation is dumb," they said. On the other hand, they never said the same of homework. As a kid, it always felt like adults worshiped school and homework, and begrudgingly I'd slave away at rows and rows of arithmetic problems. "What if my homework *was* video games?" I thought, "Wouldn't that be great?"
