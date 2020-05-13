@@ -20,7 +20,7 @@ As a kid, I was always told to stop playing video games. "Video games will rot y
 
 Now, with the power of the [Mathematikka Bukkit plugin](https://github.com/fechan/Mathematikka), you too can claim to do your homework while building dirt houses! Simply get a book and quill, write something you want to give WolframAlpha, sign the book with the title "WolframAlpha," and throw it on the ground. Within seconds*, WolframAlpha output will appear before your very eyes!
 
-* Computation time may vary depending on complexity of WolframAlpha request and size of response
+\* Computation time may vary depending on complexity of WolframAlpha request and size of response
 
 ## How it works
 When the signed book and quill hits the ground, it asks a [Mathematica](https://www.wolfram.com/mathematica/) Kernel (which evaluates [Wolfram Language](https://www.wolfram.com/language/)) to send a request to WolframAlpha. Since it uses Mathematica, you have to have Mathematica installed on the computer that's running the Minecraft server, otherwise there's nothing for the plugin to ask for results from. To make Mathematica do things from Java, you use [J/Link](https://reference.wolfram.com/language/JLink/tutorial/Overview.html).
