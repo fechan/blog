@@ -26,7 +26,7 @@ When Unicode considered including emoji into the Unicode Standard, it had to loo
 
 ![Pre-Unicode triumph emoji renditions considered by Unicode](/blog/assets/images/triumph-sources.png)
 
-You'll notice that KDDI's rendition is the only pre-Unicode rendition that looks like the Unicode reference emoji. In fact, early proposals for the triumph emoji were smiling, which Western audiences might associate more with triumph. The smile was the first, shown in N3580, and was carried on with a more round look in [N3607](https://www.unicode.org/wg2/docs/n3607.pdf) *Towards an encoding of symbol characters used as emoji,* which was written jointly by the Irish and German National Bodies and wherein they complained about anime on page 1.
+You'll notice that KDDI's rendition is the only pre-Unicode rendition that looks like the Unicode reference emoji. In fact, early proposals for the triumph emoji were smiling, which Western audiences might associate more with triumph. The smile was the first, shown in proposal N3580, and was carried on with a more round look in [N3607](https://www.unicode.org/wg2/docs/n3607.pdf) *Towards an encoding of symbol characters used as emoji,* which was written jointly by the Irish and German National Bodies and wherein they complained about anime on page 1.
 
 ![Pre-Unicode triumph emoji renditions considered by Unicode](/blog/assets/images/triumph-proposal.png)
 
